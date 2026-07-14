@@ -1,9 +1,8 @@
-name: Publish npm Package
+name: Publish Package on Release
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -11,20 +10,22 @@ permissions:
 
 jobs:
   publish:
-
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com
 
-      - run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-      - run: npm publish
+      - name: Publish Package
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
