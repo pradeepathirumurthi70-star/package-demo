@@ -1,0 +1,16 @@
+{
+  "name": "@YOUR_GITHUB_USERNAME/package-demo",
+  "version": "1.0.0",
+  "description": "GitHub Packages Demo",
+  "main": "format-utils.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pradeepathirumurthi70-star/package-demo.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "test": "echo \"No tests\""
+  }
+}
